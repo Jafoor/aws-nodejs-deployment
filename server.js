@@ -1,6 +1,7 @@
 const express = require('express');
 
 const app = express();
+require('dotenv').config()
 
 app.get('/api/get', (req, res) => {
     res.send({
@@ -12,12 +13,12 @@ app.get('/api/get', (req, res) => {
 
 app.get("/api/get/:id", (req, res) => {
         res.send({
-            name: 'Abu Jafor',
+            name: process.env.NAME,
             date: new Date(),
             id: req.params.id
         })
     })
 
-app.listen(8000, () => {
-    console.log('Server is running on port 8000');
+app.listen(process.env.PORT, () => {
+    console.log('Server is running on port ', process.env.PORT);
 })
